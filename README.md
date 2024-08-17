@@ -1,19 +1,9 @@
-# embedded-projects
+# Simulation of Hospital Management System
 <h1 align="center">Hi 👋, I'm Aayush Bhargava</h1>
-<h3 align="center">A passionate software builder</h3>
-<img align="right" alt="Coding" width="400" src="[https://images.app.goo.gl/gBs6Xvd5MTBBTe5v7](https://dotrobot.nl/wp-content/uploads/2023/07/embedded-hardware-engineer-elektrotechniek.webp)">
-
-- 🔭 I’m currently working on **Software Projects**
-
-- 🌱 I’m currently learning **Embedded electronics and tele-communication engineering**
-
-- 🤝 I’m looking for help with **microprocessors and stuff.**
-# embedded-projects
-<h1 align="center">Hi 👋, I'm Aayush Bhargava</h1>
-<h3 align="center">A passionate embedded developer from India</h3>
+<h3 align="center">A passionate embedded and software developer from India</h3>
 <img align="right" alt="Coding" width="400" src="https://dotrobot.nl/wp-content/uploads/2023/07/embedded-hardware-engineer-elektrotechniek.webp">
 
-- 🔭 I’m currently working on **embedded projects**
+- 🔭 I’m currently working on **Software projects**
 
 - 🌱 I’m currently learning **Embedded electronics and tele-communication engineering**
 
