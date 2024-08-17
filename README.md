@@ -1,7 +1,7 @@
 # embedded-projects
 <h1 align="center">Hi 👋, I'm Aayush Bhargava</h1>
 <h3 align="center">A passionate software builder</h3>
-<img align="right" alt="Coding" width="400" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.avisto.com%2Fen%2Fc-plus-plus-developer%2F&psig=AOvVaw2TFXwJrPIQMiVJ9_QbmZx6&ust=1723966152426000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCNDT_cPA-4cDFQAAAAAdAAAAABAE">
+<img align="right" alt="Coding" width="400" src="https://images.app.goo.gl/gBs6Xvd5MTBBTe5v7">
 
 - 🔭 I’m currently working on **Software Projects**
 
