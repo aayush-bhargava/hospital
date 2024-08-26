@@ -186,66 +186,60 @@ int main()             //main
 
 void all::tasks()
 {
- //   
- T1.attempt=0;
- T1.d_index=0;
- T1.delete_attempt=0;
- D1.show_date();
- cout<<"\n\n\t\t\t***HOSPITAL MANAGEMENT SYSTEM***"<<"\n";
- cout<<"\t\t\t       By AAYUSH BHARGAVA      "<<"\n";
- cout<<"\n\t\t\t ***Hospital Management Tasks***"<<"\n";
- cout<<"\t\t\t *******************************"<<"\n";
- cout<<"\n\n\tPlease  select a task to do...."<<"\n";
- cout<<"\n\n\t1. Enter a new patient information "<<"\n";
- cout<<"\t2. View detail of existing patient "<<"\n";
- cout<<"\t3. Search by city or blood group"<<"\n";
- cout<<"\t4. Delete entry "<<"\n";
- cout<<"\t5. Recycle Bin "<<"\n";
- cout<<"\t6. About "<<"\n";
- cout<<"\t7. Exit "<<"\n\n\n";
- cout<<"\a  Enter your task serial : ";
- cin>>task;
- switch(task)
- {
-  case 1:{
-          A1.enter_patient_info();
-          break;
-         }
-  case 2:{
-          A1.show_patient_detail();
-          break;
-         }
-  case 3:{
-          A1.search_menu();
-          break;
-         }
-  case 4:{
-          A1.delete_entry();
-          break;
-         }
-  case 5:{
-          A1.recycle_bin();
-          break;
-         }
-  case 6:{
-          A1.software_detail();
-          break;
-         }
-  case 7:{
-          A1.exit_function();
-          break;
-         }
- default:{
-         //    
-          cout<<"\n\n\n\n\n\tInvalid task serial !!!"<<"\n";
-          cout<<"\tValid options are 1-6 !!!"<<"\n";
-          cout<<"\tPress any key to return to the main task menu....\a"<<"\n";
-          getch();
-          break;
-          A1.tasks();
-         }
- }
+    // Initialize task-related variables
+    T1.attempt = 0;
+    T1.d_index = 0;
+    T1.delete_attempt = 0;
+    D1.show_date();
+
+    while (true) {
+        // Display the main menu
+        cout << "\n\n\t\t\t***HOSPITAL MANAGEMENT SYSTEM***" << "\n";
+        cout << "\t\t\t       By AAYUSH BHARGAVA      " << "\n";
+        cout << "\n\t\t\t ***Hospital Management Tasks***" << "\n";
+        cout << "\t\t\t *******************************" << "\n";
+        cout << "\n\n\tPlease select a task to do...." << "\n";
+        cout << "\n\n\t1. Enter a new patient information " << "\n";
+        cout << "\t2. View detail of existing patient " << "\n";
+        cout << "\t3. Search by city or blood group" << "\n";
+        cout << "\t4. Delete entry " << "\n";
+        cout << "\t5. Recycle Bin " << "\n";
+        cout << "\t6. About " << "\n";
+        cout << "\t7. Exit " << "\n\n\n";
+        cout << "\a  Enter your task serial : ";
+        cin >> task;
+
+        switch(task)
+        {
+            case 1:
+                A1.enter_patient_info();
+                break;
+            case 2:
+                A1.show_patient_detail();
+                break;
+            case 3:
+                A1.search_menu();
+                break;
+            case 4:
+                A1.delete_entry();
+                break;
+            case 5:
+                A1.recycle_bin();
+                break;
+            case 6:
+                A1.software_detail();
+                break;
+            case 7:
+                A1.exit_function();
+                return; // Exit the function and hence the loop
+            default:
+                cout << "\n\n\n\n\n\tInvalid task serial !!!" << "\n";
+                cout << "\tValid options are 1-7 !!!" << "\n";
+                break; // Loop back to the menu
+        }
+    }
 }
+
 
 void date::enter_date()
 {
@@ -505,9 +499,10 @@ void all::enter_patient_info()
   cin.get(ch);
   //   
  //
-  cout<<"\nDisease : "<<endl;
-  char disease[100];
-  cin>>disease;
+    cin.ignore(); // To ignore any remaining newline characters from previous input
+    cout << "\nDisease : ";
+    cin.getline(PI[T1.i].disease, 100); // Read the full line of disease description
+
   //
   cout<<"\n *** Blood group ***"<<"\n";
   //   
@@ -808,248 +803,199 @@ void dob::enter_date()
 
 void all::show_patient_detail()
 {
-    
- if(T1.d_index==1)
- {
-  T1.d_index=0;
-  cout<<"\n\n";
-  goto direct;
- }
- if(T1.current==0)
- {
-  cout<<"\n\n\n";
-  cout<<"\tDatabase is empty !!!"<<"\n";
-  cout<<"\tPlease enter some information first. "<<"\n";
-  cout<<"\n\n\tDo you want to enter now (Y/N) : \a";
-  cin>>T1.enter_now;
-  while(T1.enter_now!='Y'&&T1.enter_now!='y'&&T1.enter_now!='N'&&T1.enter_now!='n')
-  {
-   cout<<"\a\n\tPlease enter a correct option (Y/N) : ";
-   cin>>T1.enter_now;
-  }
-  if(T1.enter_now=='y'||T1.enter_now=='Y')
-  {
-   A1.enter_patient_info();
-  }
-  else
-  {
-   A1.tasks();
-  }
- }
- cout<<"\n\t\t****** CURRENT DATABASE ENTRIES ******\n\n";
- cout<<"\t\tRegistration no.       Name of patient\n\n";
- for(T1.j=1;T1.j<100;T1.j++)
- {
-  if(T1.entry_index[T1.j]==1)
-  {
-   cout<<"\t\t       "<<T1.j<<"              "<<PI[T1.j].name<<"\n";
-  }
-  else
-  {
-   continue;
-  }
- }
- cout<<"\n\n\t\tPress 0 to return to main menu.... ";
- cout<<"\n\n\n\tEnter registration number : ";
-    
- cin>>T1.regis;
-    
- cout<<"\n\n";
- cin.get(ch);
- if(T1.regis==0)
- {
-  A1.tasks();
- }
- T1.show_count++;
- direct:                //label for "goto" jump statement
- if(T1.regis<=0)
- {
-  T1.attempt++;
-  if(T1.attempt==3)
-  {
-   cout<<"\n\n\tYou have entered wrong registration number 3 times ."<<"\n";
-   cout<<"\tAccess Denied!!! "<<"\n";
-   cout<<"\tPlease try again later. "<<"\n";
-   cout<<"\tPress any key to exit to main task menu..."<<"\n";
-   getch();
-      
-   A1.tasks();
-  }
-  cout<<"\n\n\tSorry, invalid registration number !!! ";
-  cout<<"\n\tRegistration number starts from 1 . ";
-  cout<<"\n\n\tPress any key to continue..... \a";
-  getch();
-  A1.show_patient_detail();
- }
- if(T1.regis>0&&T1.regis<T1.serial&&T1.entry_index[T1.regis]==0)
- {
-  cout<<"\n\tSorry, the patient has left the hospital.";
-  T1.attempt++;
-  if(T1.attempt==3)
-  {
-   cout<<"\n\n\tYou have entered wrong registration number 3 times ."<<"\n";
-   cout<<"\tAccess Denied!!! "<<"\n";
-   cout<<"\tPlease try again later. "<<"\n";
-   cout<<"\tPress any key to exit to main task menu..."<<"\n";
-   getch();
-      
-   A1.tasks();
-  }
-  cout<<"\n\tPress any key to continue..."<<"\n";
-  getch();
- }
- if((T1.regis<0||T1.regis>=T1.serial)&&T1.entry_index[T1.regis]==-1)
- {
-  T1.attempt++;
-     
-  if(T1.attempt!=3)
-  {
-   cout<<"\n\n\tSorry, the registration number is invalid ."<<"\n";
-   T1.entry=T1.serial-1;
-   if(T1.entry==1)
-   {
-    cout<<"\tOnly 1 record has been added .\n";
-   }
-   else
-   {
-    cout<<"\tOnly "<<T1.entry<<" records have been added .\n";
-   }
-  }
-  if(T1.attempt==3)
-  {
-   cout<<"\n\n\tYou have entered wrong registration number 3 times ."<<"\n";
-   cout<<"\tAccess Denied!!! "<<"\n";
-   cout<<"\tPlease try again later. "<<"\n";
-   cout<<"\tPress any key to exit to main task menu..."<<"\a\n";
-   getch();
-      
-   A1.tasks();
-  }
-  cout<<"\n\n\n\tPress any key to continue.....";
-  getch();
-  A1.show_patient_detail();
- }
- if(T1.regis>0&&T1.regis<T1.serial&&T1.entry_index[T1.regis]==1)
- {
-  T1.attempt=0;
-     
-  cout<<"\n\t  ***INFORMATION FOR PATIENT REGISTRATION NUMBER "<<T1.regis<<"***\n\n";
-     
-  cout<<"\tName           : "<<PI[T1.regis].name<<"\n";
-     
-  cout<<"\tSex            : ";
-     
-  if(PI[T1.regis].sex==1)
-  {
-   cout<<"Male "<<"\n";
-      
-  }
-  if(PI[T1.regis].sex==2)
-  {
-   cout<<"Female "<<"\n";
-      
-  }
-  cout<<"\tBlood Group    : ";
-     
-  switch(PI[T1.regis].bld_group)
-  {
-   case 1:{
-              
-           cout<<"A+\n";
-           break;
-          }
-   case 2:{
-              
-           cout<<"A-\n";
-           break;
-          }
-   case 3:{
-              
-           cout<<"B+\n";
-           break;
-          }
-   case 4:{
-              
-           cout<<"B-\n";
-           break;
-          }
-   case 5:{
-              
-           cout<<"AB+\n";
-           break;
-          }
-   case 6:{
-              
-           cout<<"AB-\n";
-           break;
-          }
-   case 7:{
-              
-           cout<<"O+\n";
-           break;
-          }
-   case 8:{
-              
-           cout<<"O-\n";
-           break;
-          }
-  }
-     
-  cout<<"\tDate of birth  : ";
-     
-  DOB1.show_date();
-  cout<<"\tMartial Status : ";
-     
-  if(PI[T1.regis].   marital_status==1)
-  {
-   cout<<"Married "<<"\n";
-      
-  }
-  else
-  {
-   cout<<"Single "<<"\n";
-      
-  }
+    if (T1.d_index == 1)
+    {
+        T1.d_index = 0;
+        cout << "\n\n";
+        goto direct;
+    }
+    if (T1.current == 0)
+    {
+        cout << "\n\n\n";
+        cout << "\tDatabase is empty !!!\n";
+        cout << "\tPlease enter some information first. \n";
+        cout << "\n\n\tDo you want to enter now (Y/N) : \a";
+        cin >> T1.enter_now;
+        while (T1.enter_now != 'Y' && T1.enter_now != 'y' && T1.enter_now != 'N' && T1.enter_now != 'n')
+        {
+            cout << "\a\n\tPlease enter a correct option (Y/N) : ";
+            cin >> T1.enter_now;
+        }
+        if (T1.enter_now == 'y' || T1.enter_now == 'Y')
+        {
+            A1.enter_patient_info();
+        }
+        else
+        {
+            A1.tasks();
+        }
+    }
 
-     
-  cout<<"\n\t          **ADDRESS**"<<"\n";
-     
-  cout<<"\n\tHouse no.      : "<<PI[T1.regis].AD1.house;
-     
-  cout<<"\n\tStreet         : "<<PI[T1.regis].AD1.street;
-     
-  cout<<"\n\tCity           : "<<PI[T1.regis].AD1.city;
-     
-  cout<<"\n\tDistrict       : "<<PI[T1.regis].AD1.dist;
-     
-  cout<<"\n\tState          : "<<PI[T1.regis].AD1.state;
-     
-  cout<<"\n\tCountry        : "<<PI[T1.regis].AD1.country;
-     
- }
- T1.d_index=0;
-    
-    
- cout<<"\n\n\n\n\tWant to view detail of another patient : ";
-    
- cin>>answer1;
- while(answer1!='Y'&&answer1!='y'&&answer1!='N'&&answer1!='n')
- {
-     
-  cout<<"\a\tPlz re-enter a correct option (Y/N) ? ";
-     
-  cin>>answer1;
- }
-    
- if(answer1=='Y'||answer1=='y')
- {
-  A1.show_patient_detail();
- }
- else
- {
-  A1.tasks();
- }
-}                       //end of  function
+    cout << "\n\t\t****** CURRENT DATABASE ENTRIES ******\n\n";
+    cout << "\t\tRegistration no.       Name of patient\n\n";
+    for (T1.j = 1; T1.j < 100; T1.j++)
+    {
+        if (T1.entry_index[T1.j] == 1)
+        {
+            cout << "\t\t       " << T1.j << "              " << PI[T1.j].name << "\n";
+        }
+    }
+
+    cout << "\n\n\t\tPress 0 to return to main menu.... ";
+    cout << "\n\n\n\tEnter registration number : ";
+    cin >> T1.regis;
+    cout << "\n\n";
+    cin.get(ch); // Consume newline character
+
+    if (T1.regis == 0)
+    {
+        A1.tasks();
+    }
+
+    T1.show_count++;
+direct: // Label for "goto" jump statement
+    if (T1.regis <= 0)
+    {
+        T1.attempt++;
+        if (T1.attempt == 3)
+        {
+            cout << "\n\n\tYou have entered wrong registration number 3 times.\n";
+            cout << "\tAccess Denied!!!\n";
+            cout << "\tPlease try again later.\n";
+            cout << "\tPress any key to exit to main task menu...\n";
+            getch();
+            A1.tasks();
+        }
+        cout << "\n\n\tSorry, invalid registration number !!! ";
+        cout << "\n\tRegistration number starts from 1. ";
+        cout << "\n\n\tPress any key to continue..... \a";
+        getch();
+        A1.show_patient_detail();
+    }
+    if (T1.regis > 0 && T1.regis < T1.serial && T1.entry_index[T1.regis] == 0)
+    {
+        cout << "\n\tSorry, the patient has left the hospital.";
+        T1.attempt++;
+        if (T1.attempt == 3)
+        {
+            cout << "\n\n\tYou have entered wrong registration number 3 times.\n";
+            cout << "\tAccess Denied!!!\n";
+            cout << "\tPlease try again later.\n";
+            cout << "\tPress any key to exit to main task menu...\n";
+            getch();
+            A1.tasks();
+        }
+        cout << "\n\tPress any key to continue..." << "\n";
+        getch();
+    }
+    if ((T1.regis < 0 || T1.regis >= T1.serial) && T1.entry_index[T1.regis] == -1)
+    {
+        T1.attempt++;
+        if (T1.attempt != 3)
+        {
+            cout << "\n\n\tSorry, the registration number is invalid.\n";
+            T1.entry = T1.serial - 1;
+            if (T1.entry == 1)
+            {
+                cout << "\tOnly 1 record has been added.\n";
+            }
+            else
+            {
+                cout << "\tOnly " << T1.entry << " records have been added.\n";
+            }
+        }
+        if (T1.attempt == 3)
+        {
+            cout << "\n\n\tYou have entered wrong registration number 3 times.\n";
+            cout << "\tAccess Denied!!!\n";
+            cout << "\tPlease try again later.\n";
+            cout << "\tPress any key to exit to main task menu...\a\n";
+            getch();
+            A1.tasks();
+        }
+        cout << "\n\n\n\tPress any key to continue.....";
+        getch();
+        A1.show_patient_detail();
+    }
+    if (T1.regis > 0 && T1.regis < T1.serial && T1.entry_index[T1.regis] == 1)
+    {
+        T1.attempt = 0;
+        cout << "\n\t  ***INFORMATION FOR PATIENT REGISTRATION NUMBER " << T1.regis << "***\n\n";
+        cout << "\tName           : " << PI[T1.regis].name << "\n";
+        cout << "\tSex            : ";
+        if (PI[T1.regis].sex == 1)
+        {
+            cout << "Male\n";
+        }
+        if (PI[T1.regis].sex == 2)
+        {
+            cout << "Female\n";
+        }
+        cout << "\tBlood Group    : ";
+        switch (PI[T1.regis].bld_group)
+        {
+            case 1:
+                cout << "A+\n";
+                break;
+            case 2:
+                cout << "A-\n";
+                break;
+            case 3:
+                cout << "B+\n";
+                break;
+            case 4:
+                cout << "B-\n";
+                break;
+            case 5:
+                cout << "AB+\n";
+                break;
+            case 6:
+                cout << "AB-\n";
+                break;
+            case 7:
+                cout << "O+\n";
+                break;
+            case 8:
+                cout << "O-\n";
+                break;
+        }
+        cout << "\tDate of birth  : ";
+        DOB1.show_date();
+        cout << "\tDisease        : " << PI[T1.regis].disease << "\n"; // Correctly display disease field
+        cout << "\tMarital Status : ";
+        if (PI[T1.regis].marital_status == 1)
+        {
+            cout << "Married\n";
+        }
+        else
+        {
+            cout << "Single\n";
+        }
+        cout << "\n\t          **ADDRESS**\n";
+        cout << "\n\tHouse no.      : " << PI[T1.regis].AD1.house;
+        cout << "\n\tStreet         : " << PI[T1.regis].AD1.street;
+        cout << "\n\tCity           : " << PI[T1.regis].AD1.city;
+        cout << "\n\tDistrict       : " << PI[T1.regis].AD1.dist;
+        cout << "\n\tState          : " << PI[T1.regis].AD1.state;
+        cout << "\n\tCountry        : " << PI[T1.regis].AD1.country;
+    }
+    T1.d_index = 0;
+    cout << "\n\n\n\n\tWant to view detail of another patient : ";
+    cin >> answer1;
+    while (answer1 != 'Y' && answer1 != 'y' && answer1 != 'N' && answer1 != 'n')
+    {
+        cout << "\a\tPlz re-enter a correct option (Y/N) ? ";
+        cin >> answer1;
+    }
+    if (answer1 == 'Y' || answer1 == 'y')
+    {
+        A1.show_patient_detail();
+    }
+    else
+    {
+        A1.tasks();
+    }
+}
 
 void dob::show_date()
 {
